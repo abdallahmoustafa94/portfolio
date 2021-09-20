@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "bison";
+  src: local("bison"), url("./assets/fonts/bison/Bison-Bold(PersonalUse).ttf");
+  font-weight: bold;
+}
+
+body {
+  background-color: #fff;
+  font-family: "lato", sans-serif !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "bison", sans-serif !important;
+}
+
+.active {
+  color: #505050 !important;
+}
+
+.hover:hover {
+  color: #505050 !important;
+}
+
+.color-primary {
+  color: #323232;
+}
+
+.typed {
+  font-family: "bison", sans-serif !important;
+}
+
+.font-primary {
+  font-family: "bison", sans-serif !important;
+}
+
+.project:hover {
+  transform: translateY(-30px);
+  transition: all ease-in-out 1s;
+}
+.project-title,
+.project-desc {
+  font-family: "bison", sans-serif !important;
+}
+
+@media (max-width: 768px) {
+  .skills-icons {
+    font-size: 40px;
+  }
+}
+
+@media (min-width: 769px) {
+  .skills-icons {
+    font-size: 80px;
+  }
+}
