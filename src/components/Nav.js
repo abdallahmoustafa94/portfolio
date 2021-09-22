@@ -35,8 +35,8 @@ const Nav = () => {
                   <Menu.Item
                     className={`${
                       splitLocation[1] === ""
-                        ? "active tracking-wider font-bold cursor-pointer mr-8 text-xl test  "
-                        : "hover tracking-wider font-bold cursor-pointer mr-8 text-xl   cursor-pointer mr-8 text-black"
+                        ? "active xs:py-2 sm:py-2 tracking-wider font-bold cursor-pointer mr-8 text-xl test  "
+                        : "xs:py-2 sm:py-2 hover tracking-wider font-bold cursor-pointer mr-8 text-xl   cursor-pointer mr-8 text-black"
                     }`}
                     name="About Me"
                   />

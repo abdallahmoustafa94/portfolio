@@ -30,7 +30,7 @@ const MyWorks = () => {
       <div className="px-8 my-12">
         <Grid stackable>
           <Grid.Row columns={4}>
-            <Grid.Column tablet={8} computer={4}>
+            <Grid.Column tablet={16} computer={4}>
               <Animated
                 animationIn="bounceInDown"
                 animationInDuration={400}
@@ -61,7 +61,7 @@ const MyWorks = () => {
                 </a>
               </Animated>
             </Grid.Column>
-            <Grid.Column tablet={8} computer={4}>
+            <Grid.Column tablet={16} computer={4}>
               <Animated
                 animationIn="bounceInDown"
                 animationInDuration={800}
@@ -88,7 +88,7 @@ const MyWorks = () => {
               </Animated>
             </Grid.Column>
 
-            <Grid.Column tablet={8} computer={4}>
+            <Grid.Column tablet={16} computer={4}>
               <Animated
                 animationIn="bounceInDown"
                 animationInDuration={1200}
@@ -118,7 +118,7 @@ const MyWorks = () => {
                 </a>
               </Animated>
             </Grid.Column>
-            <Grid.Column tablet={8} computer={4}>
+            <Grid.Column tablet={16} computer={4}>
               <Animated
                 animationIn="bounceInDown"
                 animationInDuration={1800}
