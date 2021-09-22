@@ -54,11 +54,13 @@ h6 {
 @media (max-width: 768px) {
   .skills-icons {
     font-size: 40px;
+    margin: auto !important;
   }
 }
 
 @media (min-width: 769px) {
   .skills-icons {
     font-size: 80px;
+    margin: auto !important;
   }
 }

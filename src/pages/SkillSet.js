@@ -20,10 +20,10 @@ import { Animated } from "react-animated-css";
 
 const SkillSet = () => {
   return (
-    <div className=" w-full flex-1">
+    <div className=" w-full flex-1 xs:items-center my-8">
       <div>
         <Typed
-          className="md:text-6xl xs:text-4xl text-center block mb-8  typed tracking-widest"
+          className="text-6xl text-center block mb-8  typed tracking-widest"
           showCursor={false}
           strings={["About My Skills"]}
           typeSpeed={50}
@@ -35,8 +35,8 @@ const SkillSet = () => {
         animationInDuration={2000}
         isVisible={true}
       >
-        <div className="w-full">
-          <Grid doubling container centered>
+        <div className="w-full xs:hidden sm:hidden md:block">
+          <Grid doubling container>
             <Grid.Row columns={5}>
               <Grid.Column>
                 <AiFillHtml5 className="skills-icons" />
@@ -79,6 +79,66 @@ const SkillSet = () => {
               <Grid.Column>
                 <FaAws className="skills-icons" />
               </Grid.Column>
+              <Grid.Column>
+                <SiRedux className="skills-icons" />
+              </Grid.Column>
+              <Grid.Column>
+                <FaSass className="skills-icons" />
+              </Grid.Column>
+              <Grid.Column>
+                <FaGitSquare className="skills-icons" />
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </div>
+        <div className="lg:hidden md:hidden xs:block sm:block">
+          <Grid container>
+            <Grid.Row columns={3}>
+              <Grid.Column>
+                <AiFillHtml5 className="skills-icons" />
+              </Grid.Column>
+              <Grid.Column>
+                <DiCss3 className="skills-icons" />
+              </Grid.Column>
+              <Grid.Column>
+                <IoLogoJavascript className="skills-icons" />
+              </Grid.Column>
+            </Grid.Row>
+            <Grid.Row columns={3}>
+              <Grid.Column>
+                <SiTypescript className="skills-icons" />
+              </Grid.Column>
+              <Grid.Column>
+                <FaReact className="skills-icons" />
+              </Grid.Column>
+              <Grid.Column>
+                <FaVuejs className="skills-icons" />
+              </Grid.Column>
+            </Grid.Row>
+            <Grid.Row columns={3}>
+              <Grid.Column>
+                <FaNpm className="skills-icons" />
+              </Grid.Column>
+              <Grid.Column>
+                <DiJqueryLogo className="skills-icons" />
+              </Grid.Column>
+              <Grid.Column>
+                <FaBootstrap className="skills-icons" />
+              </Grid.Column>
+            </Grid.Row>
+            <Grid.Row columns={3}>
+              <Grid.Column>
+                <SiTailwindcss className="skills-icons" />
+              </Grid.Column>
+              <Grid.Column>
+                <SiMaterialUi className="skills-icons" />
+              </Grid.Column>
+              <Grid.Column>
+                <FaAws className="skills-icons" />
+              </Grid.Column>
+            </Grid.Row>
+
+            <Grid.Row columns={3}>
               <Grid.Column>
                 <SiRedux className="skills-icons" />
               </Grid.Column>

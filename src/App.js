@@ -22,7 +22,7 @@ function App() {
       className="App"
       style={{
         display: "flex",
-        minHeight: "100vh",
+        minHeight: "95vh",
         flexDirection: "column",
         justifyContent: "space-around",
       }}

@@ -10,7 +10,7 @@ const About = () => {
     <>
       <div className=" w-full flex-1 my-8">
         <div className=" sm:mx-auto">
-          <div className="xs:flex xs:flex-col-reverse xs:px-6 md:px-12 lg:flex w-full lg:mx-auto sm:items-center">
+          <div className="xs:flex sm:flex xs:flex-col-reverse sm:flex-col-reverse lg:flex-row xs:px-6 sm:px-6 md:px-12 lg:flex w-full lg:mx-auto sm:items-center">
             <div className="lg:flex lg:w-1/2  lg:justify-end  lg:ml-32 ">
               <Animated
                 animationIn="fadeInUp"
@@ -19,11 +19,11 @@ const About = () => {
               >
                 <div>
                   <span className="text-xl font-bold">HEY! I AM</span>
-                  <h1 className="md:text-6xl my-0  font-bold tracking-wider">
+                  <h1 className="text-6xl my-0  font-bold tracking-wider">
                     Abdallah Moustafa
                   </h1>
                   <Typed
-                    className="font-medium md:text-3xl tracking-wider"
+                    className="font-medium text-3xl tracking-wider"
                     strings={["Frontend Developer"]}
                     typeSpeed={40}
                     showCursor={false}

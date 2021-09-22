@@ -24,7 +24,7 @@ const ContactMe = () => {
       <div className=" my-12 ">
         <Grid stackable container>
           <Grid.Row columns={4}>
-            <Grid.Column textAlign="center">
+            <Grid.Column textAlign="center" tablet={8} computer={4}>
               <Animated
                 animationIn="bounceInDown"
                 animationInDuration={400}
@@ -43,7 +43,7 @@ const ContactMe = () => {
                 </Card>
               </Animated>
             </Grid.Column>
-            <Grid.Column textAlign="center">
+            <Grid.Column textAlign="center" tablet={8} computer={4}>
               <Animated
                 animationIn="bounceInDown"
                 animationInDuration={800}
@@ -62,7 +62,7 @@ const ContactMe = () => {
                 </Card>
               </Animated>
             </Grid.Column>
-            <Grid.Column>
+            <Grid.Column tablet={8} computer={4}>
               <Animated
                 animationIn="bounceInDown"
                 animationInDuration={1200}
@@ -86,7 +86,7 @@ const ContactMe = () => {
                 </a>
               </Animated>
             </Grid.Column>
-            <Grid.Column textAlign="center">
+            <Grid.Column textAlign="center" tablet={8} computer={4}>
               <Animated
                 animationIn="bounceInDown"
                 animationInDuration={1800}
