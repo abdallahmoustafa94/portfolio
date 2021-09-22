@@ -20,8 +20,8 @@ import { Animated } from "react-animated-css";
 
 const SkillSet = () => {
   return (
-    <div className="my-12 mb-24">
-      <div className="mx-auto">
+    <div className=" w-full flex-1">
+      <div>
         <Typed
           className="md:text-6xl xs:text-4xl text-center block mb-8  typed tracking-widest"
           showCursor={false}
@@ -35,8 +35,8 @@ const SkillSet = () => {
         animationInDuration={2000}
         isVisible={true}
       >
-        <div className=" md:w-3/4 md:mx-60 xs:mx-8 md:my-16 text-center  ">
-          <Grid doubling>
+        <div className="w-full">
+          <Grid doubling container centered>
             <Grid.Row columns={5}>
               <Grid.Column>
                 <AiFillHtml5 className="skills-icons" />

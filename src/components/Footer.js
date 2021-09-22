@@ -17,7 +17,7 @@ const Footer = () => {
         <FaFacebookF size={20} className="hover" />
         <FaLinkedinIn size={20} className="my-12 hover" />
       </div> */}
-      <div className="flex w-full items-center xs:px-4 lg:px-12">
+      <div className="flex w-full items-center xs:px-4 lg:px-12" style={{}}>
         <div className="flex justify-start w-1/2 xs:text-lg  font-primary lg:text-xl">
           <a
             href="mailto:abdallahmoustafa1194@gmail.com"

@@ -18,7 +18,15 @@ import {
 
 function App() {
   return (
-    <div className="App">
+    <div
+      className="App"
+      style={{
+        display: "flex",
+        minHeight: "100vh",
+        flexDirection: "column",
+        justifyContent: "space-around",
+      }}
+    >
       <Particles
         id="particles-js"
         style={{
@@ -49,7 +57,7 @@ function App() {
               speed: 3,
             },
             number: {
-              value: 50,
+              value: 40,
             },
             density: {
               enable: true,

@@ -8,7 +8,7 @@ import { Grid, Card } from "semantic-ui-react";
 const About = () => {
   return (
     <>
-      <div className=" w-full xs:my-4 sm:my-20 mb-28 xs:mb-28">
+      <div className=" w-full flex-1 my-8">
         <div className=" sm:mx-auto">
           <div className="xs:flex xs:flex-col-reverse xs:px-6 md:px-12 lg:flex w-full lg:mx-auto sm:items-center">
             <div className="lg:flex lg:w-1/2  lg:justify-end  lg:ml-32 ">
