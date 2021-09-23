@@ -17,7 +17,11 @@ const Nav = () => {
       >
         <div className="w-full  lg:px-8 mx-auto flex flex-wrap items-center justify-between">
           <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start items-center">
-            <h1 className="text-4xl my-2 tracking-wider">Abdallah Moustafa</h1>
+            <Link to="/">
+              <h1 className="text-4xl my-2 tracking-wider cursor-pointer">
+                Abdallah Moustafa
+              </h1>
+            </Link>
             <Button
               className=" text-pink cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none "
               type="button"
