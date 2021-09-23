@@ -33,10 +33,10 @@ const About = () => {
                     experience in blending the art of design with skill of
                     programming to deliver an immersive and engaging user
                     experience through efficient website development.
-                    <br />
+                    {/* <br />
                     Proficient with JS Frameworks, with extensive knowledge of
                     UX and user psychology. Specialized in ReactJs , Vuejs and
-                    responsive design.
+                    responsive design. */}
                   </p>
                 </div>
               </Animated>

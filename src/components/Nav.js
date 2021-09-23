@@ -54,7 +54,7 @@ const Nav = () => {
                         ? "active tracking-wider font-bold cursor-pointer mr-8 text-xl  text-bold xs:py-2 sm:py-2"
                         : "hover tracking-wider font-bold cursor-pointer mr-8 text-xl  cursor-pointer xs:py-2 sm:py-2 mr-8 text-black"
                     }`}
-                    name="Skillset"
+                    name="Skills"
                   />
                 </Link>
               </li>

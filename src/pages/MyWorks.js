@@ -29,8 +29,8 @@ const MyWorks = () => {
       </div>
       <div className="px-8 my-12">
         <Grid stackable>
-          <Grid.Row columns={4}>
-            <Grid.Column tablet={16} computer={4}>
+          <Grid.Row columns={2}>
+            {/* <Grid.Column tablet={16} computer={4}>
               <Animated
                 animationIn="bounceInDown"
                 animationInDuration={400}
@@ -60,8 +60,8 @@ const MyWorks = () => {
                   </Card>
                 </a>
               </Animated>
-            </Grid.Column>
-            <Grid.Column tablet={16} computer={4}>
+            </Grid.Column> */}
+            {/* <Grid.Column tablet={16} computer={4}>
               <Animated
                 animationIn="bounceInDown"
                 animationInDuration={800}
@@ -86,12 +86,12 @@ const MyWorks = () => {
                   </Card>
                 </a>
               </Animated>
-            </Grid.Column>
+            </Grid.Column> */}
 
-            <Grid.Column tablet={16} computer={4}>
+            <Grid.Column tablet={16} computer={8}>
               <Animated
                 animationIn="bounceInDown"
-                animationInDuration={1200}
+                animationInDuration={400}
                 isVisible={true}
               >
                 <a href="https://bookarage.com/" target="_blank">
@@ -111,17 +111,17 @@ const MyWorks = () => {
                         </span>
                         <br />
                         Developed the frontend of this car services app ,using
-                        React,React.js ecosystem
+                        React js
                       </Card.Description>
                     </Card.Content>
                   </Card>
                 </a>
               </Animated>
             </Grid.Column>
-            <Grid.Column tablet={16} computer={4}>
+            <Grid.Column tablet={16} computer={8}>
               <Animated
                 animationIn="bounceInDown"
-                animationInDuration={1800}
+                animationInDuration={800}
                 isVisible={true}
               >
                 <a href="https://badrstores.com/" target="_blank">
