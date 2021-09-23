@@ -18,7 +18,7 @@ const Nav = () => {
         <div className="w-full  lg:px-8 mx-auto flex flex-wrap items-center justify-between">
           <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start items-center">
             <Link to="/">
-              <h1 className="text-4xl my-2 tracking-wider cursor-pointer">
+              <h1 className="text-4xl my-2 tracking-wider cursor-pointer text-black">
                 Abdallah Moustafa
               </h1>
             </Link>
