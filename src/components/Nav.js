@@ -23,12 +23,12 @@ export default function Nav() {
             </li>
           ))}
         </ul>
-        <button className="md:hidden text-2xl text-gray-200" onClick={() => setOpen(!open)} aria-label="Toggle menu">
+        <button className="md:hidden text-2xl text-gray-200" onClick={() => setOpen(!open)} aria-label="Toggle menu" aria-expanded={open} aria-controls="mobile-menu">
           {open ? <HiX /> : <HiMenu />}
         </button>
       </nav>
       {open && (
-        <ul className="md:hidden px-6 pb-4 space-y-3 text-gray-200 bg-ink">
+        <ul className="md:hidden px-6 pb-4 space-y-3 text-gray-200 bg-ink" id="mobile-menu">
           {links.map((l) => (
             <li key={l.href}>
               <a href={l.href} onClick={() => setOpen(false)} className="block py-1">{l.label}</a>
