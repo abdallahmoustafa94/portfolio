@@ -1,11 +1,14 @@
 import Nav from './components/Nav';
 import Footer from './components/Footer';
+import Hero from './components/Hero';
+import About from './components/About';
 
 function App() {
   return (
     <>
       <Nav />
-      <div className="min-h-screen bg-ink text-accent font-sans p-10 pt-24">theme ok</div>
+      <Hero />
+      <About />
       <Footer />
     </>
   );
