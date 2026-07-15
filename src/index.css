@@ -2,69 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-family: "bison";
-  src: local("bison"), url("./assets/fonts/bison/Bison-Bold(PersonalUse).ttf");
-  font-weight: bold;
+html { scroll-behavior: smooth; }
+body { background-color: #0a0a0f; color: #e4e4e7; }
+
+.dot-grid {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 28px 28px;
 }
 
-body {
-  background-color: #fff;
-  font-family: "lato", sans-serif !important;
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
+.reveal-visible { opacity: 1; transform: translateY(0); }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "bison", sans-serif !important;
-}
-
-.active {
-  color: #505050 !important;
-}
-
-.hover:hover {
-  color: #505050 !important;
-}
-
-.color-primary {
-  color: #323232;
-}
-
-.typed {
-  font-family: "bison", sans-serif !important;
-}
-
-.font-primary {
-  font-family: "bison", sans-serif !important;
-}
-
-.project:hover {
-  transform: translateY(-30px);
-  transition: all ease-in-out 1s;
-}
-.project-title,
-.project-desc {
-  font-family: "bison", sans-serif !important;
-}
-
-@media (max-width: 768px) {
-  .skills-icons {
-    font-size: 40px;
-    margin: auto !important;
-  }
-}
-
-@media (min-width: 769px) {
-  .skills-icons {
-    font-size: 80px;
-    margin: auto !important;
-  }
-}
-
-a:hover {
-  color: inherit;
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
 }
