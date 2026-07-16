@@ -1,6 +1,4 @@
 import Section from './Section';
-import Reveal from './Reveal';
-import { useCountUp } from '../hooks/useCountUp';
 import mypic from '../assets/mypic.png';
 
 const stats = [
@@ -9,28 +7,6 @@ const stats = [
   { value: '40%', label: 'Fewer production bugs' },
   { value: '25%', label: 'Faster feature delivery' },
 ];
-
-const philosophy = [
-  { icon: '⚡', title: 'Performance-First', body: 'Focusing on minimal bundle footprints, server-side streaming rendering, and excellent Web Vitals to keep loads instant.' },
-  { icon: '🛡️', title: 'Clean Architecture', body: 'Authoring structured, type-safe TypeScript codebases with modular hooks and dry components that scale seamlessly.' },
-  { icon: '🎨', title: 'Design & Usability', body: 'Translating Figma designs into pixel-perfect, accessible interactive interfaces with fluid movement and typography.' },
-];
-
-function StatTile({ value, label, delay }) {
-  const [countRef, display] = useCountUp(value);
-  return (
-    <Reveal delay={delay} className="glass-panel glass-panel-hover rounded-2xl p-5 text-center border border-white border-opacity-5">
-      <dt className="sr-only">{label}</dt>
-      <dd ref={countRef} className="text-3xl md:text-4xl font-extrabold text-accent font-display">{display}</dd>
-      <dd
-        className="mt-2 sm:text-xs font-semibold uppercase tracking-wider text-gray-500 leading-snug"
-        style={{ fontSize: '10px' }}
-      >
-        {label}
-      </dd>
-    </Reveal>
-  );
-}
 
 export default function About() {
   return (
@@ -50,8 +26,17 @@ export default function About() {
             standards where I work.
           </p>
           <dl className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6">
-            {stats.map((s, i) => (
-              <StatTile key={s.label} value={s.value} label={s.label} delay={i * 110} />
+            {stats.map((s) => (
+              <div key={s.label} className="glass-panel glass-panel-hover rounded-2xl p-5 text-center border border-white border-opacity-5">
+                <dt className="sr-only">{s.label}</dt>
+                <dd className="text-3xl md:text-4xl font-extrabold text-accent font-display">{s.value}</dd>
+                <dd 
+                  className="mt-2 sm:text-xs font-semibold uppercase tracking-wider text-gray-500 leading-snug"
+                  style={{ fontSize: '10px' }}
+                >
+                  {s.label}
+                </dd>
+              </div>
             ))}
           </dl>
         </div>
@@ -69,13 +54,21 @@ export default function About() {
       <div className="mt-20 pt-12 border-t border-white border-opacity-5">
         <h4 className="text-xs font-bold tracking-[0.2em] text-accent uppercase mb-8 text-center font-mono">My Development Philosophy</h4>
         <div className="grid sm:grid-cols-3 gap-6">
-          {philosophy.map((p, i) => (
-            <Reveal key={p.title} delay={i * 130} className="glass-panel rounded-2xl p-6 border border-white border-opacity-5 hover:border-accent hover:border-opacity-25 transition-all duration-300">
-              <span className="text-2xl text-accent">{p.icon}</span>
-              <h5 className="text-white font-display font-bold text-lg mt-4 mb-2">{p.title}</h5>
-              <p className="text-gray-400 text-sm leading-relaxed">{p.body}</p>
-            </Reveal>
-          ))}
+          <div className="glass-panel rounded-2xl p-6 border border-white border-opacity-5 hover:border-accent hover:border-opacity-25 transition-all duration-300">
+            <span className="text-2xl text-accent">⚡</span>
+            <h5 className="text-white font-display font-bold text-lg mt-4 mb-2">Performance-First</h5>
+            <p className="text-gray-400 text-sm leading-relaxed">Focusing on minimal bundle footprints, server-side streaming rendering, and excellent Web Vitals to keep loads instant.</p>
+          </div>
+          <div className="glass-panel rounded-2xl p-6 border border-white border-opacity-5 hover:border-accent hover:border-opacity-25 transition-all duration-300">
+            <span className="text-2xl text-accent">🛡️</span>
+            <h5 className="text-white font-display font-bold text-lg mt-4 mb-2">Clean Architecture</h5>
+            <p className="text-gray-400 text-sm leading-relaxed">Authoring structured, type-safe TypeScript codebases with modular hooks and dry components that scale seamlessly.</p>
+          </div>
+          <div className="glass-panel rounded-2xl p-6 border border-white border-opacity-5 hover:border-accent hover:border-opacity-25 transition-all duration-300">
+            <span className="text-2xl text-accent">🎨</span>
+            <h5 className="text-white font-display font-bold text-lg mt-4 mb-2">Design & Usability</h5>
+            <p className="text-gray-400 text-sm leading-relaxed">Translating Figma designs into pixel-perfect, accessible interactive interfaces with fluid movement and typography.</p>
+          </div>
         </div>
       </div>
     </Section>

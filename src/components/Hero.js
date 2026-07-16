@@ -1,25 +1,13 @@
-import { useEffect, useRef, useState } from 'react';
 import { HiChevronDown } from 'react-icons/hi';
 import { FaLinkedin, FaGithub } from 'react-icons/fa';
 import cv from '../assets/my-cv.pdf';
 
-function PerformanceRing({ value, label, delay = 0 }) {
+function PerformanceRing({ value, label }) {
   const radius = 24;
   const stroke = 3;
   const normalizedRadius = radius - stroke * 2;
   const circumference = normalizedRadius * 2 * Math.PI;
-  const [shown, setShown] = useState(0);
-
-  useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      setShown(value);
-      return undefined;
-    }
-    const t = setTimeout(() => setShown(value), 700 + delay);
-    return () => clearTimeout(t);
-  }, [value, delay]);
-
-  const strokeDashoffset = circumference - (shown / 100) * circumference;
+  const strokeDashoffset = circumference - (value / 100) * circumference;
 
   return (
     <div className="flex flex-col items-center gap-1.5">
@@ -54,21 +42,6 @@ function PerformanceRing({ value, label, delay = 0 }) {
 }
 
 export default function Hero() {
-  const tiltRef = useRef(null);
-
-  const handleTilt = (e) => {
-    const el = tiltRef.current;
-    if (!el || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    const r = el.getBoundingClientRect();
-    const x = (e.clientX - r.left) / r.width - 0.5;
-    const y = (e.clientY - r.top) / r.height - 0.5;
-    el.style.transform = `perspective(900px) rotateX(${(-y * 5).toFixed(2)}deg) rotateY(${(x * 6).toFixed(2)}deg)`;
-  };
-
-  const resetTilt = () => {
-    if (tiltRef.current) tiltRef.current.style.transform = '';
-  };
-
   return (
     <div id="top" className="dot-grid aurora min-h-screen flex items-center relative overflow-hidden">
       {/* Background Animated Ambient Lights */}
@@ -80,32 +53,32 @@ export default function Hero() {
           
           {/* Left Column: Heading Copy */}
           <div className="md:col-span-7 flex flex-col items-start">
-            <span className="hero-enter hero-d-1 inline-flex items-center gap-2 text-xs font-semibold text-gray-200 border border-white border-opacity-5 bg-white bg-opacity-5 backdrop-filter backdrop-blur-md rounded-full px-4 py-2 mb-8 shadow-sm hover:border-accent hover:border-opacity-20 transition duration-300">
+            <span className="inline-flex items-center gap-2 text-xs font-semibold text-gray-200 border border-white border-opacity-5 bg-white bg-opacity-5 backdrop-filter backdrop-blur-md rounded-full px-4 py-2 mb-8 shadow-sm hover:border-accent hover:border-opacity-20 transition duration-300">
               <span className="w-2.5 h-2.5 rounded-full bg-accent pulse-dot" />
               Available for senior front-end roles
             </span>
             
-            <p className="hero-enter hero-d-2 font-display font-bold text-xs text-accent uppercase mb-3" style={{ letterSpacing: '0.25em' }}>
+            <p className="font-display font-bold text-xs text-accent uppercase mb-3" style={{ letterSpacing: '0.25em' }}>
               React.js · Next.js · TypeScript
             </p>
             
-            <h1 className="hero-enter hero-d-3 text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight font-display" style={{ lineHeight: '1.05' }}>
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight font-display" style={{ lineHeight: '1.05' }}>
               <span className="text-gradient">Abdallah Moustafa</span>
               <span className="text-accent">.</span>
             </h1>
             
-            <h2 className="hero-enter hero-d-4 text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-gray-500 mt-4 leading-tight font-display">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-gray-500 mt-4 leading-tight font-display">
               I build fast, polished web apps.
             </h2>
             
-            <p className="hero-enter hero-d-5 mt-8 max-w-xl text-base text-gray-400 leading-relaxed">
+            <p className="mt-8 max-w-xl text-base text-gray-400 leading-relaxed">
               Senior Front-End Developer — 6+ years shipping high-performance products with
               <span className="text-gray-200 font-medium"> React</span>,
               <span className="text-gray-200 font-medium"> Next.js</span> &amp;
               <span className="text-gray-200 font-medium"> TypeScript</span> for enterprise, government, and IoT.
             </p>
             
-            <div className="hero-enter hero-d-6 mt-12 flex flex-wrap items-center gap-5">
+            <div className="mt-12 flex flex-wrap items-center gap-5">
               <a href="#projects"
                  className="shimmer-btn px-8 py-4 rounded-xl bg-accent text-ink font-bold tracking-wide hover:shadow-lg hover:shadow-cyan-500/25 transform hover:-translate-y-0.5 transition duration-300">
                 View my work
@@ -133,12 +106,11 @@ export default function Hero() {
           </div>
 
           {/* Right Column: Premium Dev Console Widget */}
-          <div className="hero-enter-right hero-d-5 hidden md:block md:col-span-5 relative group"
-               onMouseMove={handleTilt} onMouseLeave={resetTilt}>
+          <div className="hidden md:block md:col-span-5 relative group">
             {/* Glowing neon background aura for the console */}
             <div className="absolute inset-0 bg-gradient-to-tr from-accent via-indigo-500 to-pink-500 rounded-3xl opacity-10 blur-2xl group-hover:opacity-20 transition-all duration-500" />
-
-            <div ref={tiltRef} className="tilt-card relative glass-panel rounded-2xl border border-white border-opacity-10 p-6 shadow-2xl overflow-hidden">
+            
+            <div className="relative glass-panel rounded-2xl border border-white border-opacity-10 p-6 shadow-2xl overflow-hidden">
               {/* Terminal Window Header */}
               <div className="flex items-center gap-1.5 border-b border-white border-opacity-5 pb-4 mb-5">
                 <span className="w-2.5 h-2.5 rounded-full bg-red-400 bg-opacity-50" />
@@ -163,10 +135,10 @@ export default function Hero() {
               <div>
                 <p className="font-bold tracking-widest text-gray-400 uppercase mb-4 font-mono" style={{ fontSize: '10px' }}>Performance Audit</p>
                 <div className="grid grid-cols-4 gap-3 border border-white border-opacity-5 rounded-xl p-4" style={{ backgroundColor: 'rgba(255, 255, 255, 0.02)' }}>
-                  <PerformanceRing value={100} label="Perf" delay={0} />
-                  <PerformanceRing value={100} label="Access" delay={150} />
-                  <PerformanceRing value={100} label="Best" delay={300} />
-                  <PerformanceRing value={100} label="SEO" delay={450} />
+                  <PerformanceRing value={100} label="Perf" />
+                  <PerformanceRing value={100} label="Access" />
+                  <PerformanceRing value={100} label="Best" />
+                  <PerformanceRing value={100} label="SEO" />
                 </div>
               </div>
             </div>

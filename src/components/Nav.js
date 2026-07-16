@@ -12,7 +12,6 @@ const links = [
 export default function Nav() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [active, setActive] = useState('');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,23 +19,6 @@ export default function Nav() {
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  // Scrollspy: highlight the nav link for the section in view
-  useEffect(() => {
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) setActive(`#${entry.target.id}`);
-        });
-      },
-      { rootMargin: '-40% 0px -55% 0px' }
-    );
-    links.forEach((l) => {
-      const el = document.getElementById(l.href.slice(1));
-      if (el) io.observe(el);
-    });
-    return () => io.disconnect();
   }, []);
 
   return (
@@ -54,15 +36,9 @@ export default function Nav() {
           <ul className="hidden md:flex items-center gap-8 text-sm text-gray-300 font-medium">
             {links.map((l) => (
               <li key={l.href}>
-                <a href={l.href}
-                   aria-current={active === l.href ? 'true' : undefined}
-                   className={`relative py-2 transition-colors duration-200 group ${
-                     active === l.href ? 'text-white' : 'hover:text-white'
-                   }`}>
+                <a href={l.href} className="relative py-2 hover:text-white transition-colors duration-200 group">
                   {l.label}
-                  <span className={`absolute bottom-0 left-0 h-0.5 bg-accent transition-all duration-300 ${
-                    active === l.href ? 'w-full' : 'w-0 group-hover:w-full'
-                  }`} />
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full" />
                 </a>
               </li>
             ))}

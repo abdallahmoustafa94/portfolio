@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import Section from './Section';
-import Reveal from './Reveal';
 import { HiMail, HiCheck } from 'react-icons/hi';
 import { FaLinkedin, FaGithub } from 'react-icons/fa';
 
@@ -32,7 +31,6 @@ export default function Contact() {
           </div>
 
           <div className="space-y-4 pt-4">
-            <Reveal delay={0}>
             <a href="mailto:abdallahmoustafa1194@gmail.com"
                className="group flex items-center gap-4 p-4 rounded-xl border border-white border-opacity-5 bg-white bg-opacity-5 hover:border-accent hover:border-opacity-25 hover:bg-opacity-10 transition-all duration-300">
               <span className="w-12 h-12 rounded-lg flex items-center justify-center bg-accent bg-opacity-10 text-accent text-xl group-hover:bg-accent group-hover:text-ink transition-all duration-300">
@@ -43,9 +41,7 @@ export default function Contact() {
                 <p className="text-sm font-medium text-white mt-0.5 truncate">abdallahmoustafa1194@gmail.com</p>
               </div>
             </a>
-            </Reveal>
 
-            <Reveal delay={120}>
             <a href="https://www.linkedin.com/in/abdallah-moustafa-4ba357178/" target="_blank" rel="noopener noreferrer"
                className="group flex items-center gap-4 p-4 rounded-xl border border-white border-opacity-5 bg-white bg-opacity-5 hover:border-accent hover:border-opacity-25 hover:bg-opacity-10 transition-all duration-300">
               <span className="w-12 h-12 rounded-lg flex items-center justify-center bg-accent bg-opacity-10 text-accent text-xl group-hover:bg-accent group-hover:text-ink transition-all duration-300">
@@ -56,9 +52,7 @@ export default function Contact() {
                 <p className="text-sm font-medium text-white mt-0.5">abdallah-moustafa-4ba357178</p>
               </div>
             </a>
-            </Reveal>
 
-            <Reveal delay={240}>
             <a href="https://github.com/abdallahmoustafa94" target="_blank" rel="noopener noreferrer"
                className="group flex items-center gap-4 p-4 rounded-xl border border-white border-opacity-5 bg-white bg-opacity-5 hover:border-accent hover:border-opacity-25 hover:bg-opacity-10 transition-all duration-300">
               <span className="w-12 h-12 rounded-lg flex items-center justify-center bg-accent bg-opacity-10 text-accent text-xl group-hover:bg-accent group-hover:text-ink transition-all duration-300">
@@ -69,7 +63,6 @@ export default function Contact() {
                 <p className="text-sm font-medium text-white mt-0.5">github.com/abdallahmoustafa94</p>
               </div>
             </a>
-            </Reveal>
           </div>
         </div>
 
