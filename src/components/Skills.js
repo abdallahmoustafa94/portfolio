@@ -1,12 +1,13 @@
 import Section from './Section';
+import Reveal from './Reveal';
 import { skillGroups } from '../data/skills';
 
 export default function Skills() {
   return (
     <Section id="skills" num="04" title="Skills & tools">
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {skillGroups.map((g) => (
-          <div key={g.title} className="glass-panel glass-panel-hover rounded-2xl p-6 border border-white border-opacity-5 flex flex-col">
+        {skillGroups.map((g, i) => (
+          <Reveal key={g.title} delay={(i % 3) * 110} className="glass-panel glass-panel-hover rounded-2xl p-6 border border-white border-opacity-5 flex flex-col">
             <h3 className="text-white font-display font-bold text-base mb-4 tracking-tight border-b border-white border-opacity-5 pb-2.5">
               {g.title}
             </h3>
@@ -18,7 +19,7 @@ export default function Skills() {
                 </li>
               ))}
             </ul>
-          </div>
+          </Reveal>
         ))}
       </div>
     </Section>

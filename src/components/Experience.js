@@ -1,4 +1,5 @@
 import Section from './Section';
+import Reveal from './Reveal';
 import { HiBriefcase, HiLocationMarker } from 'react-icons/hi';
 import { experience } from '../data/experience';
 
@@ -6,8 +7,8 @@ export default function Experience() {
   return (
     <Section id="experience" num="02" title="Where I've worked">
       <ol className="relative border-l border-white border-opacity-10 ml-3 md:ml-6 space-y-12">
-        {experience.map((job) => (
-          <li key={job.company} className="relative pl-8 md:pl-12">
+        {experience.map((job, i) => (
+          <Reveal as="li" key={job.company} delay={Math.min(i, 1) * 120} className="relative pl-8 md:pl-12">
             {/* Timeline node */}
             <span
               className={`absolute rounded-full border-2 flex items-center justify-center ${
@@ -60,7 +61,7 @@ export default function Experience() {
                 ))}
               </ul>
             </div>
-          </li>
+          </Reveal>
         ))}
       </ol>
     </Section>

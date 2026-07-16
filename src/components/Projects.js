@@ -321,17 +321,19 @@ export default function Projects() {
 
               {/* View Window Content */}
               <div className="flex-1 overflow-y-auto" style={{ backgroundColor: 'rgba(0, 0, 0, 0.08)' }}>
-                {viewMode === 'doc' ? (
-                  <RenderDescriptionPane project={activeProject} />
-                ) : (
-                  <RenderCodePane project={activeProject} />
-                )}
+                <div key={`${activeProject.slug}-${viewMode}`} className="fade-swap h-full">
+                  {viewMode === 'doc' ? (
+                    <RenderDescriptionPane project={activeProject} />
+                  ) : (
+                    <RenderCodePane project={activeProject} />
+                  )}
+                </div>
               </div>
             </div>
 
             {/* Right Pane (Live Visual Review Window) */}
             <div className="col-span-7 p-6 flex flex-col justify-between h-full overflow-y-auto" style={{ backgroundColor: 'rgba(255, 255, 255, 0.01)' }}>
-              <div>
+              <div key={activeProject.slug} className="fade-swap">
                 {/* Mock browser address bar */}
                 <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-black bg-opacity-35 border border-white border-opacity-5 mb-5 select-none">
                   <span className="w-2 h-2 rounded-full bg-red-400 bg-opacity-40" />
@@ -401,19 +403,21 @@ export default function Projects() {
           </div>
         </div>
 
-        {flagship && (
-          <div className="mb-6">
-            <ProjectCard project={flagship} featured />
-          </div>
-        )}
+        <div key={activeTab} className="fade-swap space-y-6">
+          {flagship && (
+            <div className="mb-6">
+              <ProjectCard project={flagship} featured />
+            </div>
+          )}
 
-        {restProjects.length > 0 && (
-          <div className="grid gap-6">
-            {restProjects.map((p) => (
-              <ProjectCard key={p.slug} project={p} />
-            ))}
-          </div>
-        )}
+          {restProjects.length > 0 && (
+            <div className="grid gap-6">
+              {restProjects.map((p) => (
+                <ProjectCard key={p.slug} project={p} />
+              ))}
+            </div>
+          )}
+        </div>
       </div>
 
     </Section>
