@@ -10,6 +10,9 @@ import adamlanesmith from '../assets/projects/adamlanesmith.jpg';
 import naftalimoses from '../assets/projects/naftalimoses.jpg';
 
 export const projects = [
+  { slug: 'alrajhi', name: 'Al Rajhi Bank', group: 'site', url: 'https://www.alrajhibank.com.sa/en', image: alrajhi,
+    description: 'Public website of the world’s largest Islamic bank — multilingual (AR/EN, RTL), accessible, high-traffic.',
+    tech: ['React', 'i18n / RTL', 'Accessibility'] },
   { slug: 'alef', name: 'Alef 360 IoT Platform', group: 'app', url: 'https://disrupt-x.io/alef-360-iot-platform/', image: alef,
     description: 'Enterprise IoT platform for real-time monitoring and control of connected devices — live sensor dashboards, asset profiles, alarms, and reporting.',
     tech: ['React', 'Redux', 'WebSockets', 'Data Visualization'] },
@@ -28,9 +31,6 @@ export const projects = [
   { slug: 'clix', name: 'Clix', group: 'app', url: 'https://www.goclix.ai/en/', image: clix,
     description: 'ZATCA-compliant e-invoicing platform for Saudi businesses — AI-assisted invoice creation with a dashboard for tracking invoices, drafts, clients, and collected tax.',
     tech: ['Next.js', 'TypeScript'] },
-  { slug: 'alrajhi', name: 'Al Rajhi Bank', group: 'site', url: 'https://www.alrajhibank.com.sa/en', image: alrajhi,
-    description: 'Public website of the world’s largest Islamic bank — multilingual (AR/EN, RTL), accessible, high-traffic.',
-    tech: ['React', 'i18n / RTL', 'Accessibility'] },
   { slug: 'sathiyasam', name: 'Sathiyasam', group: 'site', url: 'http://sathiyasam.com/', image: sathiyasam,
     description: 'Personal coaching site for a men’s self-development coach — program pages, podcast, book, and client success stories built around a "Work With Me" funnel.',
     tech: ['React', 'CSS'] },

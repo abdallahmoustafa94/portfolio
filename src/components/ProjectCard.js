@@ -1,4 +1,5 @@
 import { HiExternalLink } from 'react-icons/hi';
+import SpotlightCard from './SpotlightCard';
 
 function BrowserChrome({ url }) {
   const host = url.replace(/^https?:\/\//, '').replace(/\/.*$/, '');
@@ -14,14 +15,14 @@ function BrowserChrome({ url }) {
 
 export default function ProjectCard({ project, featured = false }) {
   return (
-    <a href={project.url} target="_blank" rel="noopener noreferrer"
-       className={`group block glass-panel rounded-2xl overflow-hidden hover:border-accent hover:border-opacity-35 transform hover:-translate-y-1.5 transition-all duration-400 hover:shadow-2xl hover:shadow-cyan-950/10
+    <SpotlightCard as="a" href={project.url} target="_blank" rel="noopener noreferrer"
+        className={`group block glass-panel rounded-2xl overflow-hidden hover:border-accent hover:border-opacity-35 transform hover:-translate-y-1.5 transition-all duration-400 hover:shadow-2xl hover:shadow-cyan-950/10
                   ${featured ? 'md:grid md:grid-cols-2' : ''}`}>
       <div className="overflow-hidden relative">
         <BrowserChrome url={project.url} />
         <img src={project.image} alt={`${project.name} screenshot`} width="1440" height="900" loading="lazy"
-             className={`w-full object-cover object-top group-hover:scale-[1.03] transition-transform duration-700 ease-out
-                        ${featured ? 'h-56 md:h-full' : 'h-44 md:h-48'}`} />
+             className={`w-full h-auto group-hover:scale-[1.03] transition-transform duration-700 ease-out
+                        ${featured ? 'md:h-full md:object-cover md:object-top' : ''}`} />
       </div>
       <div className={featured ? 'p-8 md:p-10 flex flex-col justify-center' : 'p-6'}>
         {featured && (
@@ -45,6 +46,6 @@ export default function ProjectCard({ project, featured = false }) {
           ))}
         </ul>
       </div>
-    </a>
+    </SpotlightCard>
   );
 }

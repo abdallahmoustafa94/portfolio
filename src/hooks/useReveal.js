@@ -13,7 +13,10 @@ export function useReveal() {
           io.disconnect();
         }
       },
-      { threshold: 0.15 }
+      // threshold 0 + small bottom margin: tall sections (common on mobile)
+      // can never reach a ratio-based threshold, so fire as soon as the
+      // section's top edge clears ~60px into the viewport
+      { threshold: 0, rootMargin: '0px 0px -60px 0px' }
     );
     io.observe(el);
     return () => io.disconnect();

@@ -1,13 +1,46 @@
+import { useState, useEffect } from 'react';
 import { HiChevronDown } from 'react-icons/hi';
 import { FaLinkedin, FaGithub } from 'react-icons/fa';
 import cv from '../assets/my-cv.pdf';
+import TerminalConsole from './TerminalConsole';
+import { useTilt } from '../hooks/useTilt';
 
 function PerformanceRing({ value, label }) {
   const radius = 24;
   const stroke = 3;
   const normalizedRadius = radius - stroke * 2;
   const circumference = normalizedRadius * 2 * Math.PI;
-  const strokeDashoffset = circumference - (value / 100) * circumference;
+
+  const [currentOffset, setCurrentOffset] = useState(circumference);
+  const [displayValue, setDisplayValue] = useState(0);
+
+  useEffect(() => {
+    // Smooth circle draw transition
+    const targetOffset = circumference - (value / 100) * circumference;
+    const drawTimeout = setTimeout(() => {
+      setCurrentOffset(targetOffset);
+    }, 400);
+
+    // Number count-up transition
+    let start = 0;
+    const duration = 1400; // ms
+    const increment = value / (duration / 16); // ~60fps
+
+    const countInterval = setInterval(() => {
+      start += increment;
+      if (start >= value) {
+        setDisplayValue(value);
+        clearInterval(countInterval);
+      } else {
+        setDisplayValue(Math.floor(start));
+      }
+    }, 16);
+
+    return () => {
+      clearTimeout(drawTimeout);
+      clearInterval(countInterval);
+    };
+  }, [value, circumference]);
 
   return (
     <div className="flex flex-col items-center gap-1.5">
@@ -26,7 +59,7 @@ function PerformanceRing({ value, label }) {
             fill="transparent"
             strokeWidth={stroke}
             strokeDasharray={circumference + ' ' + circumference}
-            style={{ strokeDashoffset }}
+            style={{ strokeDashoffset: currentOffset }}
             strokeLinecap="round"
             r={normalizedRadius}
             cx={radius}
@@ -34,7 +67,7 @@ function PerformanceRing({ value, label }) {
             className="transition-all duration-1000 ease-out"
           />
         </svg>
-        <span className="absolute text-[10px] font-bold text-white font-mono">{value}</span>
+        <span className="absolute text-[10px] font-bold text-white font-mono">{displayValue}</span>
       </div>
       <span className="text-[9px] font-bold tracking-wider text-gray-500 uppercase">{label}</span>
     </div>
@@ -42,6 +75,8 @@ function PerformanceRing({ value, label }) {
 }
 
 export default function Hero() {
+  const consoleTiltRef = useTilt();
+
   return (
     <div id="top" className="dot-grid aurora min-h-screen flex items-center relative overflow-hidden">
       {/* Background Animated Ambient Lights */}
@@ -52,7 +87,7 @@ export default function Hero() {
         <div className="grid md:grid-cols-12 gap-10 lg:gap-16 items-center">
           
           {/* Left Column: Heading Copy */}
-          <div className="md:col-span-7 flex flex-col items-start">
+          <div className="md:col-span-7 flex flex-col items-start animate-hero-fade" style={{ opacity: 0, animationDelay: '100ms' }}>
             <span className="inline-flex items-center gap-2 text-xs font-semibold text-gray-200 border border-white border-opacity-5 bg-white bg-opacity-5 backdrop-filter backdrop-blur-md rounded-full px-4 py-2 mb-8 shadow-sm hover:border-accent hover:border-opacity-20 transition duration-300">
               <span className="w-2.5 h-2.5 rounded-full bg-accent pulse-dot" />
               Available for senior front-end roles
@@ -93,12 +128,12 @@ export default function Hero() {
               <div className="flex items-center gap-4 text-xl text-gray-400">
                 <a href="https://www.linkedin.com/in/abdallah-moustafa-4ba357178/" target="_blank" rel="noopener noreferrer"
                    aria-label="LinkedIn" 
-                   className="w-12 h-12 rounded-xl flex items-center justify-center border border-white border-opacity-5 bg-white bg-opacity-5 backdrop-filter backdrop-blur hover:bg-accent hover:bg-opacity-10 hover:text-accent hover:border-accent hover:border-opacity-25 transition-all duration-300">
+                   className="w-12 h-12 rounded-xl flex items-center justify-center border border-white border-opacity-5 bg-white bg-opacity-5 backdrop-filter backdrop-blur hover:bg-accent hover:bg-opacity-10 hover:text-accent hover:border-accent hover:border-opacity-25 transition-all duration-300 hover:-translate-y-1 hover:rotate-3">
                   <FaLinkedin />
                 </a>
                 <a href="https://github.com/abdallahmoustafa94" target="_blank" rel="noopener noreferrer"
                    aria-label="GitHub" 
-                   className="w-12 h-12 rounded-xl flex items-center justify-center border border-white border-opacity-5 bg-white bg-opacity-5 backdrop-filter backdrop-blur hover:bg-accent hover:bg-opacity-10 hover:text-accent hover:border-accent hover:border-opacity-25 transition-all duration-300">
+                   className="w-12 h-12 rounded-xl flex items-center justify-center border border-white border-opacity-5 bg-white bg-opacity-5 backdrop-filter backdrop-blur hover:bg-accent hover:bg-opacity-10 hover:text-accent hover:border-accent hover:border-opacity-25 transition-all duration-300 hover:-translate-y-1 hover:-rotate-3">
                   <FaGithub />
                 </a>
               </div>
@@ -106,11 +141,11 @@ export default function Hero() {
           </div>
 
           {/* Right Column: Premium Dev Console Widget */}
-          <div className="hidden md:block md:col-span-5 relative group">
+          <div className="hidden md:block md:col-span-5 relative group animate-hero-fade" style={{ opacity: 0, animationDelay: '300ms' }}>
             {/* Glowing neon background aura for the console */}
             <div className="absolute inset-0 bg-gradient-to-tr from-accent via-indigo-500 to-pink-500 rounded-3xl opacity-10 blur-2xl group-hover:opacity-20 transition-all duration-500" />
             
-            <div className="relative glass-panel rounded-2xl border border-white border-opacity-10 p-6 shadow-2xl overflow-hidden">
+            <div ref={consoleTiltRef} className="tilt-card relative glass-panel rounded-2xl border border-white border-opacity-10 p-6 shadow-2xl overflow-hidden">
               {/* Terminal Window Header */}
               <div className="flex items-center gap-1.5 border-b border-white border-opacity-5 pb-4 mb-5">
                 <span className="w-2.5 h-2.5 rounded-full bg-red-400 bg-opacity-50" />
@@ -119,14 +154,8 @@ export default function Hero() {
                 <span className="ml-2.5 font-mono text-gray-500 tracking-wider" style={{ fontSize: '10px' }}>developer-profile.json</span>
               </div>
 
-              {/* Mock code JSON content */}
-              <div className="font-mono text-gray-300 space-y-1.5 leading-relaxed" style={{ fontSize: '11px' }}>
-                <p><span className="text-pink-400">&quot;role&quot;</span>: <span className="text-accent">&quot;Senior Front-End Developer&quot;</span>,</p>
-                <p><span className="text-pink-400">&quot;experience&quot;</span>: <span className="text-accent">&quot;6+ years&quot;</span>,</p>
-                <p><span className="text-pink-400">&quot;coreFocus&quot;</span>: [<span className="text-indigo-300">&quot;Next.js&quot;</span>, <span className="text-indigo-300">&quot;TypeScript&quot;</span>, <span className="text-indigo-300">&quot;Core Web Vitals&quot;</span>],</p>
-                <p><span className="text-pink-400">&quot;architecture&quot;</span>: <span className="text-accent">&quot;Clean Code &amp; Scalability&quot;</span>,</p>
-                <p><span className="text-pink-400">&quot;performanceTarget&quot;</span>: <span className="text-green-400">100</span></p>
-              </div>
+              {/* Mock code JSON content (animated typewriter) */}
+              <TerminalConsole />
 
               {/* Horizontal rule separator */}
               <div className="my-6 border-t border-white border-opacity-5" />

@@ -6,7 +6,7 @@ export const experience = [
     period: 'Aug 2024 — Present',
     current: true,
     highlights: [
-      'Architected scalable, high-traffic enterprise platforms with React, Next.js 14 & TypeScript',
+      'Built scalable, high-traffic enterprise platforms with React, Next.js 14 & TypeScript',
       'Cut page load time by 35% via SSR, code splitting, image optimization, and bundle analysis',
       'Built a Storybook component library adopted by 4+ product teams, cutting delivery time by 25%',
       'Mentored 4 developers and established org-wide coding standards and Git workflows',

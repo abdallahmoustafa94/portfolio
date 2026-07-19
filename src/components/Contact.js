@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Section from './Section';
 import { HiMail, HiCheck } from 'react-icons/hi';
 import { FaLinkedin, FaGithub } from 'react-icons/fa';
+import SpotlightCard from './SpotlightCard';
 
 export default function Contact() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -18,21 +19,25 @@ export default function Contact() {
 
   return (
     <Section id="contact" num="05" title="Get in touch">
-      <div className="grid lg:grid-cols-5 gap-12 items-start">
+      <div className="grid lg:grid-cols-5 gap-12 items-start font-sans">
         {/* Left Column: Direct Info Cards */}
         <div className="lg:col-span-2 space-y-6">
-          <div>
+          <div className="reveal-item reveal-fade-up" style={{ transitionDelay: '50ms' }}>
             <h3 className="text-3xl sm:text-4xl font-display font-black text-white leading-tight">
               Let&apos;s work together.
             </h3>
             <p className="mt-4 text-gray-400 leading-relaxed max-w-md">
-              I&apos;m open to senior front-end engineering contracts and full-time opportunities. Let&apos;s build something exceptional.
+              Have a project in mind or just want to connect? My inbox is always open. Let&apos;s build something exceptional.
             </p>
           </div>
 
           <div className="space-y-4 pt-4">
-            <a href="mailto:abdallahmoustafa1194@gmail.com"
-               className="group flex items-center gap-4 p-4 rounded-xl border border-white border-opacity-5 bg-white bg-opacity-5 hover:border-accent hover:border-opacity-25 hover:bg-opacity-10 transition-all duration-300">
+            <SpotlightCard 
+              as="a" 
+              href="mailto:abdallahmoustafa1194@gmail.com"
+              className="reveal-item reveal-fade-up group flex items-center gap-4 p-4 rounded-xl border border-white border-opacity-5 bg-white bg-opacity-5 hover:border-accent hover:border-opacity-25 hover:bg-opacity-10 transition-all duration-300"
+              style={{ transitionDelay: '100ms' }}
+            >
               <span className="w-12 h-12 rounded-lg flex items-center justify-center bg-accent bg-opacity-10 text-accent text-xl group-hover:bg-accent group-hover:text-ink transition-all duration-300">
                 <HiMail />
               </span>
@@ -40,10 +45,16 @@ export default function Contact() {
                 <p className="text-xs font-semibold uppercase tracking-wider text-gray-500">Email me directly</p>
                 <p className="text-sm font-medium text-white mt-0.5 truncate">abdallahmoustafa1194@gmail.com</p>
               </div>
-            </a>
+            </SpotlightCard>
 
-            <a href="https://www.linkedin.com/in/abdallah-moustafa-4ba357178/" target="_blank" rel="noopener noreferrer"
-               className="group flex items-center gap-4 p-4 rounded-xl border border-white border-opacity-5 bg-white bg-opacity-5 hover:border-accent hover:border-opacity-25 hover:bg-opacity-10 transition-all duration-300">
+            <SpotlightCard 
+              as="a" 
+              href="https://www.linkedin.com/in/abdallah-moustafa-4ba357178/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="reveal-item reveal-fade-up group flex items-center gap-4 p-4 rounded-xl border border-white border-opacity-5 bg-white bg-opacity-5 hover:border-accent hover:border-opacity-25 hover:bg-opacity-10 transition-all duration-300"
+              style={{ transitionDelay: '180ms' }}
+            >
               <span className="w-12 h-12 rounded-lg flex items-center justify-center bg-accent bg-opacity-10 text-accent text-xl group-hover:bg-accent group-hover:text-ink transition-all duration-300">
                 <FaLinkedin />
               </span>
@@ -51,10 +62,16 @@ export default function Contact() {
                 <p className="text-xs font-semibold uppercase tracking-wider text-gray-500">LinkedIn Profile</p>
                 <p className="text-sm font-medium text-white mt-0.5">abdallah-moustafa-4ba357178</p>
               </div>
-            </a>
+            </SpotlightCard>
 
-            <a href="https://github.com/abdallahmoustafa94" target="_blank" rel="noopener noreferrer"
-               className="group flex items-center gap-4 p-4 rounded-xl border border-white border-opacity-5 bg-white bg-opacity-5 hover:border-accent hover:border-opacity-25 hover:bg-opacity-10 transition-all duration-300">
+            <SpotlightCard 
+              as="a" 
+              href="https://github.com/abdallahmoustafa94" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="reveal-item reveal-fade-up group flex items-center gap-4 p-4 rounded-xl border border-white border-opacity-5 bg-white bg-opacity-5 hover:border-accent hover:border-opacity-25 hover:bg-opacity-10 transition-all duration-300"
+              style={{ transitionDelay: '260ms' }}
+            >
               <span className="w-12 h-12 rounded-lg flex items-center justify-center bg-accent bg-opacity-10 text-accent text-xl group-hover:bg-accent group-hover:text-ink transition-all duration-300">
                 <FaGithub />
               </span>
@@ -62,12 +79,15 @@ export default function Contact() {
                 <p className="text-xs font-semibold uppercase tracking-wider text-gray-500">GitHub Profile</p>
                 <p className="text-sm font-medium text-white mt-0.5">github.com/abdallahmoustafa94</p>
               </div>
-            </a>
+            </SpotlightCard>
           </div>
         </div>
 
         {/* Right Column: Premium Contact Form */}
-        <div className="lg:col-span-3 glass-panel rounded-2xl p-6 sm:p-8 border border-white border-opacity-5">
+        <SpotlightCard 
+          className="reveal-item reveal-fade-up lg:col-span-3 glass-panel rounded-2xl p-6 sm:p-8 border border-white border-opacity-5"
+          style={{ transitionDelay: '200ms' }}
+        >
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid sm:grid-cols-2 gap-6">
               <div className="flex flex-col space-y-2">
@@ -122,7 +142,7 @@ export default function Contact() {
               <span>Send Message</span>
             </button>
           </form>
-        </div>
+        </SpotlightCard>
       </div>
     </Section>
   );

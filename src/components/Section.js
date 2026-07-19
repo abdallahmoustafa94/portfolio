@@ -1,4 +1,5 @@
 import { useReveal } from '../hooks/useReveal';
+import ScrambleText from './ScrambleText';
 
 export default function Section({ id, num, title, children }) {
   const ref = useReveal();
@@ -14,8 +15,8 @@ export default function Section({ id, num, title, children }) {
               {num}
             </span>
           )}
-          <h2 className="text-3xl md:text-4xl font-display font-extrabold tracking-tight text-white whitespace-nowrap">
-            {title}
+          <h2 className="text-3xl md:text-4xl font-display font-extrabold tracking-tight text-white whitespace-nowrap min-w-[200px]">
+            <ScrambleText text={title} />
           </h2>
           <span className="h-px flex-1 bg-gradient-to-r from-white to-transparent opacity-5" />
         </div>

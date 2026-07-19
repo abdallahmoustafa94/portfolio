@@ -178,8 +178,87 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 0 15px rgba(34, 211, 238, 0.15);
 }
 
+/* Spotlight glow card overlay */
+.spotlight-card {
+  position: relative;
+  overflow: hidden;
+}
+.spotlight-card::before {
+  content: '';
+  position: absolute;
+  inset: 0px;
+  background: radial-gradient(
+    300px circle at var(--mouse-x, 0px) var(--mouse-y, 0px),
+    rgba(34, 211, 238, 0.07),
+    transparent 85%
+  );
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.spotlight-card:hover::before {
+  opacity: 1;
+}
+
+/* Staggered Scroll Reveal System */
+.reveal-item {
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+.reveal-fade-up {
+  transform: translateY(20px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-fade-left {
+  transform: translateX(20px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-fade-right {
+  transform: translateX(-20px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-scale-in {
+  transform: scale(0.96);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-visible .reveal-item {
+  opacity: 1;
+  transform: translate(0) scale(1);
+}
+
+/* Page load keyframe entries for the Hero section */
+@keyframes hero-fade-in {
+  0% { opacity: 0; transform: translateY(12px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.animate-hero-fade {
+  animation: hero-fade-in 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* 3D Interactive Card Tilt */
+.tilt-card {
+  transform-style: preserve-3d;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: perspective(1000px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
+}
+
+@keyframes menu-fade-in {
+  0% { opacity: 0; backdrop-filter: blur(0px); -webkit-backdrop-filter: blur(0px); }
+  100% { opacity: 1; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+}
+.animate-menu-in {
+  animation: menu-fade-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; transition: none; }
+  .reveal-item { opacity: 1; transform: none; transition: none; }
+  .tilt-card { transform: none !important; transition: none !important; }
+  .animate-menu-in { animation: none !important; backdrop-filter: blur(20px) !important; -webkit-backdrop-filter: blur(20px) !important; }
   .scroll-hint, .pulse-dot, .glow-orb-1, .glow-orb-2 { animation: none; }
 }
+

@@ -2,14 +2,12 @@ import { useState } from 'react';
 import Section from './Section';
 import ProjectCard from './ProjectCard';
 import { projects } from '../data/projects';
-import { 
-  HiExternalLink, 
-  HiChevronDown, 
-  HiChevronRight, 
-  HiX, 
-  HiFolder, 
-  HiFolderOpen, 
-  HiDocumentText 
+import SpotlightCard from './SpotlightCard';
+import {
+  HiExternalLink,
+  HiChevronDown,
+  HiX,
+  HiDocumentText
 } from 'react-icons/hi';
 
 const projectHighlights = {
@@ -71,7 +69,7 @@ function RenderCodePane({ project }) {
       <code>
         <span className="text-gray-500">{"// Source: src/projects/"}{project.slug}{".tsx"}</span>{"\n"}
         <span className="text-purple-400">import</span> {"{"} <span className="text-accent">{project.tech.slice(0, 3).join(', ')}</span> {"}"} <span className="text-purple-400">from</span> <span className="text-green-300">&apos;design-system&apos;</span>;{"\n\n"}
-        <span className="text-gray-500">{"/* Senior Front-End Architecture */"}</span>{"\n"}
+        <span className="text-gray-500">{"/* Senior Front-End Development */"}</span>{"\n"}
         <span className="text-purple-400">const</span> <span className="text-yellow-300">ProjectDetails</span> = {"{"}{"\n"}
         {"  "}name: <span className="text-green-300">&quot;{project.name}&quot;</span>,{"\n"}
         {"  "}platform: <span className="text-green-300">&quot;{project.group === 'app' ? 'Web Application' : 'Responsive Website'}&quot;</span>,{"\n"}
@@ -95,7 +93,7 @@ function RenderDescriptionPane({ project }) {
   const highlights = projectHighlights[project.slug] || {
     role: "Senior Front-End Developer",
     challenge: "Building high-performance user interfaces for modern web platforms.",
-    impact: "Delivered scalable codebase architectures and optimized bundle parameters."
+    impact: "Delivered scalable, maintainable codebases with optimized bundles."
   };
 
   return (
@@ -133,14 +131,9 @@ function RenderDescriptionPane({ project }) {
 }
 
 export default function Projects() {
-  // Mobile Category Filter State
-  const [activeTab, setActiveTab] = useState('all');
-
   // IDE Workspace States
-  const [selectedSlug, setSelectedSlug] = useState('alef');
-  const [openTabs, setOpenTabs] = useState(['alef']);
-  const [appsExpanded, setAppsExpanded] = useState(true);
-  const [sitesExpanded, setSitesExpanded] = useState(true);
+  const [selectedSlug, setSelectedSlug] = useState('alrajhi');
+  const [openTabs, setOpenTabs] = useState(['alrajhi']);
   const [viewMode, setViewMode] = useState('doc'); // 'doc' (Markdown) or 'code' (TSX)
 
   const activeProject = projects.find(p => p.slug === selectedSlug) || projects[0];
@@ -164,16 +157,8 @@ export default function Projects() {
     }
   };
 
-  const appsList = projects.filter(p => p.group === 'app');
-  const sitesList = projects.filter(p => p.group === 'site');
-
-  const filteredProjects = projects.filter((p) => {
-    if (activeTab === 'all') return true;
-    return p.group === activeTab;
-  });
-
-  const flagship = filteredProjects[0];
-  const restProjects = filteredProjects.slice(1);
+  const flagship = projects[0];
+  const restProjects = projects.slice(1);
 
   return (
     <Section id="projects" num="03" title="Things I've built">
@@ -181,7 +166,10 @@ export default function Projects() {
       {/* ========================================================================= */}
       {/* DESKTOP/TABLET: Interactive IDE Project Console                           */}
       {/* ========================================================================= */}
-      <div className="hidden md:grid grid-cols-12 glass-panel border border-white border-opacity-10 rounded-2xl overflow-hidden shadow-2xl w-full" style={{ height: '580px' }}>
+      <SpotlightCard 
+        className="hidden md:grid grid-cols-12 glass-panel border border-white border-opacity-10 rounded-2xl overflow-hidden shadow-2xl w-full reveal-item reveal-fade-up" 
+        style={{ height: '660px', transitionDelay: '100ms' }}
+      >
         
         {/* Sidebar File Tree */}
         <div className="col-span-3 bg-black bg-opacity-35 border-r border-white border-opacity-5 flex flex-col h-full select-none">
@@ -195,62 +183,19 @@ export default function Projects() {
               <span>PROJECTS</span>
             </div>
             
-            {/* Apps & Platforms Folder */}
-            <div className="pl-2">
-              <button 
-                onClick={() => setAppsExpanded(!appsExpanded)}
-                className="flex items-center gap-1.5 py-1 text-gray-300 hover:text-white w-full text-left"
-              >
-                {appsExpanded ? <HiChevronDown className="text-gray-500" /> : <HiChevronRight className="text-gray-500" />}
-                {appsExpanded ? <HiFolderOpen className="text-accent text-sm" /> : <HiFolder className="text-accent text-sm" />}
-                <span className="font-medium">apps</span>
-              </button>
-              
-              {appsExpanded && (
-                <div className="pl-4 border-l border-white border-opacity-5 ml-2.5 space-y-0.5">
-                  {appsList.map(p => (
-                    <button
-                      key={p.slug}
-                      onClick={() => handleOpenFile(p.slug)}
-                      className={`flex items-center gap-1.5 py-1 w-full text-left transition-colors duration-150 ${
-                        selectedSlug === p.slug ? 'text-accent font-semibold' : 'hover:text-gray-200'
-                      }`}
-                    >
-                      <HiDocumentText className={selectedSlug === p.slug ? 'text-accent' : 'text-gray-500'} />
-                      <span>{p.slug}{viewMode === 'doc' ? '.md' : '.tsx'}</span>
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            {/* Websites Folder */}
-            <div className="pl-2 pt-1">
-              <button 
-                onClick={() => setSitesExpanded(!sitesExpanded)}
-                className="flex items-center gap-1.5 py-1 text-gray-300 hover:text-white w-full text-left"
-              >
-                {sitesExpanded ? <HiChevronDown className="text-gray-500" /> : <HiChevronRight className="text-gray-500" />}
-                {sitesExpanded ? <HiFolderOpen className="text-accent text-sm" /> : <HiFolder className="text-accent text-sm" />}
-                <span className="font-medium">websites</span>
-              </button>
-              
-              {sitesExpanded && (
-                <div className="pl-4 border-l border-white border-opacity-5 ml-2.5 space-y-0.5">
-                  {sitesList.map(p => (
-                    <button
-                      key={p.slug}
-                      onClick={() => handleOpenFile(p.slug)}
-                      className={`flex items-center gap-1.5 py-1 w-full text-left transition-colors duration-150 ${
-                        selectedSlug === p.slug ? 'text-accent font-semibold' : 'hover:text-gray-200'
-                      }`}
-                    >
-                      <HiDocumentText className={selectedSlug === p.slug ? 'text-accent' : 'text-gray-500'} />
-                      <span>{p.slug}{viewMode === 'doc' ? '.md' : '.tsx'}</span>
-                    </button>
-                  ))}
-                </div>
-              )}
+            <div className="pl-4 border-l border-white border-opacity-5 ml-1.5 space-y-0.5">
+              {projects.map(p => (
+                <button
+                  key={p.slug}
+                  onClick={() => handleOpenFile(p.slug)}
+                  className={`flex items-center gap-1.5 py-1 w-full text-left transition-colors duration-150 ${
+                    selectedSlug === p.slug ? 'text-accent font-semibold' : 'hover:text-gray-200'
+                  }`}
+                >
+                  <HiDocumentText className={selectedSlug === p.slug ? 'text-accent' : 'text-gray-500'} />
+                  <span>{p.slug}{viewMode === 'doc' ? '.md' : '.tsx'}</span>
+                </button>
+              ))}
             </div>
           </div>
         </div>
@@ -330,39 +275,36 @@ export default function Projects() {
             </div>
 
             {/* Right Pane (Live Visual Review Window) */}
-            <div className="col-span-7 p-6 flex flex-col justify-between h-full overflow-y-auto" style={{ backgroundColor: 'rgba(255, 255, 255, 0.01)' }}>
-              <div>
-                {/* Mock browser address bar */}
-                <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-black bg-opacity-35 border border-white border-opacity-5 mb-5 select-none">
-                  <span className="w-2 h-2 rounded-full bg-red-400 bg-opacity-40" />
-                  <span className="w-2 h-2 rounded-full bg-yellow-400 bg-opacity-40" />
-                  <span className="w-2 h-2 rounded-full bg-green-400 bg-opacity-40" />
-                  <span className="ml-3 text-gray-500 font-mono truncate tracking-wide flex-1" style={{ fontSize: '10px' }}>{activeProject.url}</span>
-                </div>
-
-                <div className="relative rounded-xl overflow-hidden border border-white border-opacity-5 h-44 shadow-lg group">
-                  <img 
-                    src={activeProject.image} 
-                    alt={activeProject.name}
-                    className="w-full h-full object-cover object-top group-hover:scale-102 transition-transform duration-500" 
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-transparent opacity-60" />
-                </div>
-
-                <h4 className="text-2xl font-display font-extrabold text-white tracking-tight mt-5">
-                  {activeProject.name}
-                </h4>
-
-                <p className="mt-2.5 text-gray-400 text-sm leading-relaxed font-normal">
-                  {activeProject.description}
-                </p>
+            <div className="col-span-7 p-6 flex flex-col h-full overflow-hidden" style={{ backgroundColor: 'rgba(255, 255, 255, 0.01)' }}>
+              {/* Mock browser address bar */}
+              <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-black bg-opacity-35 border border-white border-opacity-5 mb-4 select-none flex-shrink-0">
+                <span className="w-2 h-2 rounded-full bg-red-400 bg-opacity-40" />
+                <span className="w-2 h-2 rounded-full bg-yellow-400 bg-opacity-40" />
+                <span className="w-2 h-2 rounded-full bg-green-400 bg-opacity-40" />
+                <span className="ml-3 text-gray-500 font-mono truncate tracking-wide flex-1" style={{ fontSize: '10px' }}>{activeProject.url}</span>
               </div>
 
-              <div className="pt-6">
-                <a 
-                  href={activeProject.url} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
+              <div className="relative rounded-xl overflow-hidden border border-white border-opacity-5 flex-1 shadow-lg group bg-black bg-opacity-25" style={{ minHeight: '220px' }}>
+                <img
+                  src={activeProject.image}
+                  alt={activeProject.name}
+                  className="w-full h-full object-contain group-hover:scale-102 transition-transform duration-500"
+                />
+              </div>
+
+              <h4 className="text-xl font-display font-extrabold text-white tracking-tight mt-4 flex-shrink-0">
+                {activeProject.name}
+              </h4>
+
+              <p className="mt-2 text-gray-400 text-sm leading-relaxed font-normal flex-shrink-0 overflow-hidden" style={{ display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical' }}>
+                {activeProject.description}
+              </p>
+
+              <div className="pt-4 flex-shrink-0">
+                <a
+                  href={activeProject.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="shimmer-btn w-full py-3 rounded-xl bg-accent text-ink font-bold tracking-wide hover:shadow-lg hover:shadow-cyan-500/25 transition duration-300 flex items-center justify-center gap-2"
                 >
                   <span>Launch Application</span>
@@ -373,44 +315,24 @@ export default function Projects() {
           </div>
         </div>
 
-      </div>
+      </SpotlightCard>
 
       {/* ========================================================================= */}
       {/* MOBILE ONLY: Classic Tab Selector and Glass Card Feed                     */}
       {/* ========================================================================= */}
       <div className="md:hidden space-y-6">
-        <div className="flex justify-center mb-8">
-          <div className="inline-flex p-1 rounded-2xl border border-white border-opacity-5 bg-white bg-opacity-5 backdrop-filter backdrop-blur-lg">
-            {[
-              { id: 'all', label: 'All Work' },
-              { id: 'app', label: 'Apps' },
-              { id: 'site', label: 'Sites' }
-            ].map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={`px-4 py-2 rounded-xl text-xs font-semibold tracking-wide transition-all duration-300 ${
-                  activeTab === tab.id
-                    ? 'bg-accent text-ink shadow-lg'
-                    : 'text-gray-400 hover:text-white'
-                }`}
-              >
-                {tab.label}
-              </button>
-            ))}
-          </div>
-        </div>
-
         {flagship && (
-          <div className="mb-6">
+          <div className="mb-6 reveal-item reveal-fade-up" style={{ transitionDelay: '100ms' }}>
             <ProjectCard project={flagship} featured />
           </div>
         )}
 
         {restProjects.length > 0 && (
           <div className="grid gap-6">
-            {restProjects.map((p) => (
-              <ProjectCard key={p.slug} project={p} />
+            {restProjects.map((p, idx) => (
+              <div key={p.slug} className="reveal-item reveal-fade-up" style={{ transitionDelay: `${200 + idx * 100}ms` }}>
+                <ProjectCard project={p} />
+              </div>
             ))}
           </div>
         )}
