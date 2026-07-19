@@ -1,0 +1,81 @@
+=== alef ===
+URL: https://disrupt-x.io/alef-360-iot-platform/
+TITLE: ALEF 360° IoT Platform | Disrupt-X
+META_DESCRIPTION: Manage IoT devices at scale with ALEF 360° IoT Platform—featuring real-time monitoring, alerting, and analytics in one centralized platform.
+OG_DESCRIPTION: Manage IoT devices at scale with ALEF 360° IoT Platform—featuring real-time monitoring, alerting, and analytics in one centralized platform.
+NOTES: Screenshot shows an "Asset Profile" dashboard: Last Readings cards (Temperature, Humidity, CO, TVOC, CO2, PM2.5) and an Active Alarms panel with severity/status badges (Unacknowledged/Acknowledged) — indoor air quality / IoT sensor monitoring UI.
+
+=== snc-ecs ===
+URL: https://snc-ecs.moc.gov.sa/
+TITLE: Home
+META_DESCRIPTION: (none found — govt site, minimal meta tags)
+OG_DESCRIPTION: (none found)
+VISIBLE_TEXT_SNIPPET: "Saudi National Commission for Education, Culture and Science" / "Ministry of Culture" (header logos). Hero carousel imagery of Diriyah/traditional mud-brick architecture with palm trees. Site appears to be an ECS (Educational/Cultural Commission) portal for the Ministry of Culture, Saudi Arabia.
+
+=== wateen ===
+URL: https://wateen.ai/en
+TITLE: AI-Powered B2B Marketplace & Inventory Management Platform | Wateen
+META_DESCRIPTION: Wateen is an AI-powered marketplace and inventory management platform for B2B hospitality and retail businesses. Streamline operations, optimize inventory, reduce costs, and boost profitability with smart automation.
+OG_DESCRIPTION: Wateen is an AI-powered marketplace and inventory management platform for B2B hospitality and retail businesses. Streamline operations, optimize inventory, reduce costs, and boost profitability with smart automation.
+H1: Revolutionize Your Operations With Our AI-Powered [Marketplace & Inventory]
+VISIBLE_TEXT_SNIPPET: "The Ultimate Marketplace & Inventory [solution] for the B2B Hospitality and Retail industries. This powerful platform... optimize operations and drive growth."
+
+=== whispr ===
+URL: https://trywhispr.com/
+TITLE: AI-Powered Customer Support & Chatbot Platform
+META_DESCRIPTION: Build intelligent AI chatbots trained on your knowledge base. Whispr AI answers on your website, WhatsApp, Messenger, Instagram, and Slack 24/7 — with live voice calls, voice message transcription, and seamless human handoff. Start free.
+OG_DESCRIPTION: Build intelligent AI chatbots trained on your knowledge base. Deliver instant answers 24/7 — with live voice calls and seamless human handoff.
+H1: Support that starts with AI and escalates to humans
+VISIBLE_TEXT_SNIPPET: "AI chat, live voice, one inbox." Tagline: "Train chatbots on your knowledge base, answer on every channel, and jump on a live browser call when typing isn't enough — without leaving the conversation thread." Unified agent inbox across Visitor widget, WhatsApp, Messenger, Instagram, Slack, REST API.
+
+=== anatomi ===
+URL: https://goanatomi.ai/
+TITLE: Anatomi
+META_DESCRIPTION: a catalog of some sort! (placeholder/dev meta — not production copy)
+OG_DESCRIPTION: (none found)
+H1: Elevate Your UX. Benchmark Top Flows in Minutes.
+H2: The Ultimate Research Intelligence Repository
+VISIBLE_TEXT_SNIPPET: "Access expert-reviewed journeys from fintech, banking, telecom, and more — confidently shape your next product move." UI shows an app comparison/rating tool (e.g. "Anatomi Rating 7.3", Usability/Utility breakdown) for benchmarking UX flows across banking/fintech apps.
+
+=== clix ===
+URL: https://www.goclix.ai/en/
+TITLE: CLIX - Your AI powered smart payment system
+META_DESCRIPTION: E-Invoicing payment system at its easiest, ZATCA compliant and AI powered to help you manage all of your invoices with minimal effort
+OG_DESCRIPTION: E-Invoicing payment system at its easiest, ZATCA compliant and AI powered to help you manage all of your invoices with minimal effort
+VISIBLE_TEXT_SNIPPET: Hero headline "Your AI Smooth Digital Invoicing Journey" / "Simplify your billing and purchasing process with our solution!" Dashboard screenshot shows Total Invoice, Total Drafted Invoice, Items, Total Client, Total Tax Collected stat tiles — ZATCA-compliant Saudi e-invoicing SaaS.
+
+=== alrajhi ===
+URL: https://www.alrajhibank.com.sa/en
+TITLE: (empty — SPA-rendered, title set via JS)
+META_DESCRIPTION: Discover a world of convenience with Al Rajhi Bank's tailored banking packages and accounts, designed to simplify your daily banking and cater to your unique lifestyle.
+OG_DESCRIPTION: same as meta description
+H1: Banking at Anytime & Anywhere
+VISIBLE_TEXT_SNIPPET: "Enjoy faster, easier banking anytime with our 24/7 services." Major Saudi retail/business bank homepage — Accounts, Cards, Finance, Insurance, Offers, Segments nav.
+
+=== sathiyasam ===
+URL: http://sathiyasam.com/
+TITLE: (empty)
+META_DESCRIPTION: (none found)
+OG_DESCRIPTION: (none found)
+H1: Discover the Man Within
+H2: Who is [Sathiya Sam]
+VISIBLE_TEXT_SNIPPET: "Let me help you discover the man within. Find Your Freedom. Live with Purpose. Become the Man You Were Meant to Be." Personal brand / coaching site for men's coaching (Work With Me, Success Stories, Book, Podcast).
+
+=== adamlanesmith ===
+URL: https://adamlanesmith.com/
+TITLE: Home - Adam Lane Smith
+META_DESCRIPTION: (curl blocked by bot protection returning 403; rendered-DOM text used instead) "Experience the Power of Secure Attachment. Discover the key to building unforgettable relationships, finding lifelong love, and bonding with those you value the most."
+H1: Experience the Power of Secure Attachment
+H2: Valentine's Sale | Save up to 50% on coaching and courses
+VISIBLE_TEXT_SNIPPET: Attachment-styles coaching brand — Attachment Coaching, Courses And Training, Free Quiz, Free Community, Resources.
+
+=== naftalimoses ===
+URL: https://www.naftalimoses.com/
+TITLE: Naftali Moses
+META_DESCRIPTION: (none found)
+OG_DESCRIPTION: (none found)
+H1: Awaken Your Humanity
+H2: Who is [Naftali Moses]
+VISIBLE_TEXT_SNIPPET: "Revolutionary Integrative Coaching: Awaken Your Humanity." Personal coaching brand — Work With Me, About, Testimonials, Contact, "Get Coaching" CTA.
+
+NOTE: Fetch method — curl with browser UA for <title>/meta description/og:description; for JS-rendered or bot-protected sites (adamlanesmith 403 via curl, snc-ecs, anatomi, clix, sathiyasam, naftalimoses missing meta), fell back to headless Chrome --dump-dom to extract rendered title/h1/h2/meta plus a manual visible-text snippet transcribed from the screenshot. Richer VISIBLE_TEXT_SNIPPET fields are provided throughout for Task 3 to draw project descriptions from.

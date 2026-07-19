@@ -1,28 +1,22 @@
 module.exports = {
-  important: true,
-  purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
-  darkMode: false, // or 'media' or 'class'
+  mode: 'jit',
+  purge: ['./src/**/*.{js,jsx}', './public/index.html'],
+  darkMode: false,
   theme: {
-    extend: {},
-    screens: {
-      xs: { min: "0", max: "639px" },
-      sm: "640px",
-      // => @media (min-width: 640px) { ... }
-
-      md: "768px",
-      // => @media (min-width: 768px) { ... }
-
-      lg: "1024px",
-      // => @media (min-width: 1024px) { ... }
-
-      xl: "1280px",
-      // => @media (min-width: 1280px) { ... }
-
-      "2xl": "1536px",
-      // => @media (min-width: 1536px) { ... }
+    extend: {
+      scale: { 102: '1.02' },
+      colors: {
+        ink: '#050508',
+        panel: '#0d0d12',
+        accent: '#22d3ee',
+      },
+      fontFamily: {
+        sans: ['"Plus Jakarta Sans"', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        display: ['Outfit', 'sans-serif'],
+      },
+      maxWidth: { content: '72rem' },
     },
   },
-
-  variants: {},
+  variants: { extend: {} },
   plugins: [],
-};
+}
