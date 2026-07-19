@@ -118,7 +118,7 @@ export default function Hero() {
                  className="shimmer-btn px-8 py-4 rounded-xl bg-accent text-ink font-bold tracking-wide hover:shadow-lg hover:shadow-cyan-500/25 transform hover:-translate-y-0.5 transition duration-300">
                 View my work
               </a>
-              <a href={cv} download="Abdallah-Moustafa-CV.pdf"
+              <a href={cv} download="Abdallah-Moustafa-Senior-Frontend-Developer-CV.pdf"
                  className="px-8 py-4 rounded-xl border border-white border-opacity-10 bg-white bg-opacity-5 hover:bg-opacity-10 text-gray-200 font-bold hover:border-accent hover:text-accent hover:border-opacity-30 transition-all duration-300">
                 Download CV
               </a>
