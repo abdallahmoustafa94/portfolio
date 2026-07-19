@@ -3,10 +3,26 @@
 @tailwind utilities;
 
 html { scroll-behavior: smooth; }
+
+/* Mobile Safari: keep rubber-band scroll vertical-only and stop
+   automatic text inflation in landscape */
+html, body {
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
   background-color: #050508;
   color: #e4e4e7;
   font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Mobile Safari: 100vh includes the area behind the collapsing address
+   bar, making min-h-screen sections resize and jump while scrolling.
+   svh is the stable small-viewport height. */
+@supports (min-height: 100svh) {
+  .min-h-screen { min-height: 100svh; }
 }
 
 /* Headings style override for premium typography */
