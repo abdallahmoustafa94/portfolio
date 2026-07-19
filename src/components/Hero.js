@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { HiChevronDown } from 'react-icons/hi';
 import { FaLinkedin, FaGithub } from 'react-icons/fa';
-import cv from '../assets/my-cv.pdf';
+const cv = `${process.env.PUBLIC_URL}/Abdallah-Moustafa-Senior-Frontend-Developer-CV.pdf`;
 import TerminalConsole from './TerminalConsole';
 import { useTilt } from '../hooks/useTilt';
 
