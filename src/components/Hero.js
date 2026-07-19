@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import { HiChevronDown } from 'react-icons/hi';
 import { FaLinkedin, FaGithub } from 'react-icons/fa';
-const cv = `${process.env.PUBLIC_URL}/Abdallah-Moustafa-Senior-Frontend-Developer-CV.pdf`;
 import TerminalConsole from './TerminalConsole';
 import { useTilt } from '../hooks/useTilt';
+
+const cv = `${process.env.PUBLIC_URL}/Abdallah-Moustafa-Senior-Frontend-Developer-CV.pdf`;
 
 function PerformanceRing({ value, label }) {
   const radius = 24;
